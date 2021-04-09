@@ -1,11 +1,10 @@
-import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import NavBarDesktop from './NavBarDesktop';
 import NavBarMobileTablet from './NavBarMobileTablet';
 
 const NavBar = () => {
   return (
-    <Grid>
+    <Grid style={{ marginBottom: '5em' }}>
       <Grid.Column only="tablet computer" width="16">
         <NavBarDesktop />
       </Grid.Column>

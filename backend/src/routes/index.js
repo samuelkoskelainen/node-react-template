@@ -3,6 +3,6 @@ const noteRouter = require('./noteRouter');
 
 const router = express.Router();
 
-router.use('/note', noteRouter);
+router.use('/notes', noteRouter);
 
 module.exports = router;
