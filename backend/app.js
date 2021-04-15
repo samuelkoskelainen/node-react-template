@@ -8,7 +8,7 @@ const apiRouter = require('./src/routes/index');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
-  console.log('server in development-mode');
+  console.log('Server in development-mode');
   app.use(cors());
 }
 
@@ -19,10 +19,13 @@ const PORT = process.env.PORT || 5000;
 
 app.use('/api', apiRouter);
 
-app.use(express.static(path.join(__dirname, 'build')));
+if (process.env.NODE_ENV === 'production') {
+  console.log('Server in production-mode');
+  app.use(express.static(path.join(__dirname, 'build')));
 
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+  app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+}
 
-app.listen(PORT, () => console.log(`Server listening on port: 5000`));
+app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
